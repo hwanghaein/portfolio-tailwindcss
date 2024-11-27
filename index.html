@@ -29,7 +29,7 @@
           </p>
         </div>
 
-        <div class="flex items-center gap-x-6">
+        <div class="hidden md:flex items-center gap-x-6">
           <a href="#home" class="hover:text-blue-500 transition-colors">홈</a>
           <a href="#about" class="hover:text-blue-500 transition-colors"
             >소개</a
@@ -50,8 +50,39 @@
             <i class="fas fa-moon text-gray-700 dark:text-yellow-400"></i>
           </button>
         </div>
+        <button
+          id="menuToggle"
+          class="md:hidden p-2 text-gray-700 dark:text-white"
+        >
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
       </nav>
     </header>
+    <aside id="mobileMenu"
+      class="block md:hidden fixed right-0 inset-y-0 w-64 bg-white dark:bg-gray-800 shadow-lg translate-x-full transition-transform duration-300 z-20"
+    >
+      <button id="closeMenu" class="p-2 m-4 text-gray-700 dark:text-white">
+        <i class="fas fa-times text-2xl"></i>
+      </button>
+      <nav class="flex flex-col space-y-4 mt-10 px-6">
+        <a href="#home" class="hover:text-blue-500 transition-colors">홈</a>
+        <a href="#about" class="hover:text-blue-500 transition-colors">소개</a>
+        <a href="#skills" class="hover:text-blue-500 transition-colors">기술</a>
+        <a href="#projects" class="hover:text-blue-500 transition-colors"
+          >프로젝트</a
+        >
+        <a href="#contact" class="hover:text-blue-500 transition-colors"
+          >연락처</a
+        >
+        <button
+          id="darkModeToggleMobile"
+          class="p-2 w-full rounded-full bg-gray-200 dark:bg-gray-700 focus:ring focus:ring-blue-500"
+        >
+          <i class="fas fa-moon text-gray-700 dark:text-yellow-400"></i>
+        </button>
+      </nav>
+    </aside>
+
     <main class="container max-w-4xl mx-auto px-6 py-12">
       <!-- Home Section -->
       <section id="home" class="flex justify-between items-center mb-12">
@@ -440,6 +471,15 @@
       document
         .getElementById('darkModeToggle')
         .addEventListener('click', toggleDarkMode);
+        const mobileMenu = document.getElementById('mobileMenu')
+
+        // 모바일 메뉴 열기
+        document.getElementById('menuToggle').addEventListener('click',()=>{
+        mobileMenu.classList.toggle('translate-x-full')
+        });
+        document.getElementById('closeMenu').addEventListener('click',()=>{
+        mobileMenu.classList.add('translate-x-full')
+        });
       initialTheme();
     </script>
   </body>
